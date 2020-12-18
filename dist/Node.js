@@ -71,7 +71,7 @@ var Node = function () {
                     result = this.value;
                     break;
                 case Node.TYPE_STRING:
-                    result = this.value.replace('"','');
+                    result = this.value.replaceAll('"', '');
                     break;
                 case Node.TYPE_POWER:
                     result = Math.pow(this.children[0].evaluate(vars), this.children[1].evaluate(vars));
