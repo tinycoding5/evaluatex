@@ -6,7 +6,7 @@ try {
 } catch (err) {
     if (err.code === 'MODULE_NOT_FOUND') {
         require('babel-register');
-        entry = require('./dist/evaluatex').default;
+        entry = require('./dist/evaluatex').default;       
     } else {
         console.log(err);
         process.exit(1);

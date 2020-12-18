@@ -70,6 +70,9 @@ var Node = function () {
                 case Node.TYPE_NUMBER:
                     result = this.value;
                     break;
+                case Node.TYPE_STRING:
+                    result = this.value.replace('"','');
+                    break;
                 case Node.TYPE_POWER:
                     result = Math.pow(this.children[0].evaluate(vars), this.children[1].evaluate(vars));
                     break;
@@ -201,6 +204,7 @@ Node.TYPE_FUNCTION = "FUNCTION";
 Node.TYPE_INVERSE = "INVERSE";
 Node.TYPE_NEGATE = "NEGATE";
 Node.TYPE_NUMBER = "NUMBER";
+Node.TYPE_STRING = "STRING";
 Node.TYPE_POWER = "POWER";
 Node.TYPE_PRODUCT = "PRODUCT";
 Node.TYPE_SUM = "SUM";

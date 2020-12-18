@@ -59,10 +59,13 @@ Token.TYPE_BANG = "BANG";
 Token.TYPE_COMMA = "COMMA";
 Token.TYPE_POWER = "POWER";
 Token.TYPE_NUMBER = "NUMBER";
+Token.TYPE_STRING = "STRING";
 Token.patterns = new Map([[Token.TYPE_LPAREN, /(\(|\[|{|\\left\(|\\left\[)/], // Match (, [, {, \left(, \left[
 [Token.TYPE_RPAREN, /(\)|]|}|\\right\)|\\right])/], // Match ), ], }, \right), \right]
-[Token.TYPE_PLUS, /\+/], [Token.TYPE_MINUS, /-/], [Token.TYPE_TIMES, /\*/], [Token.TYPE_DIVIDE, /\//], [Token.TYPE_COMMAND, /\\[A-Za-z]+/], [Token.TYPE_SYMBOL, /[A-Za-z_][A-Za-z_0-9]*/], [Token.TYPE_WHITESPACE, /\s+/], // Whitespace
-[Token.TYPE_ABS, /\|/], [Token.TYPE_BANG, /!/], [Token.TYPE_COMMA, /,/], [Token.TYPE_POWER, /\^/], [Token.TYPE_NUMBER, /\d+(\.\d+)?/]]);
+[Token.TYPE_PLUS, /\+/], [Token.TYPE_MINUS, /-/], [Token.TYPE_TIMES, /\*/], [Token.TYPE_DIVIDE, /\//], 
+[Token.TYPE_COMMAND, /\\[A-Za-z]+/], [Token.TYPE_SYMBOL, /[A-Za-z_][A-Za-z_0-9]*/], [Token.TYPE_WHITESPACE, /\s+/], // Whitespace
+[Token.TYPE_ABS, /\|/], [Token.TYPE_BANG, /!/], [Token.TYPE_COMMA, /,/], [Token.TYPE_POWER, /\^/], 
+[Token.TYPE_NUMBER, /\d+(\.\d+)?/], [Token.TYPE_STRING,  /"([^"]*(?:""[^"]*([^("\/,/")]))*)*"/g]]);
 exports.default = Token;
 ;
 

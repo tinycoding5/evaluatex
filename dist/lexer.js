@@ -70,6 +70,9 @@ var Lexer = function () {
         this.constants = Object.assign({}, constants, _localFunctions2.default);
         this.opts = opts;
         this.tokens = [];
+        // console.log('exp', buffer);
+        // console.log('constants', constants);
+        // console.log('options', opts)
     }
 
     _createClass(Lexer, [{
@@ -90,7 +93,7 @@ var Lexer = function () {
             var charMode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
             while (this.hasNext()) {
-                var token = charMode ? this.nextCharToken() : this.next();
+                var token = charMode ? this.nextCharToken() : this.next();               
                 this.tokens.push((0, _replaceToken2.default)(token));
 
                 if (this.opts.latex && isCharArgToken(token)) {
@@ -141,19 +144,17 @@ var Lexer = function () {
             try {
                 for (var _iterator = _Token2.default.patterns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var _ref = _step.value;
-
                     var _ref2 = _slicedToArray(_ref, 2);
-
                     var type = _ref2[0];
-                    var regex = _ref2[1];
-
+                    var regex = _ref2[1];                   
                     // Force the regex to match only at the beginning of the string
                     var regexFromStart = new RegExp(/^/.source + regex.source);
-
-                    // When `len` is undefined, substr reads to the end
+                  
+                    // When `len` is undefined, substr reads to the end                 
                     var match = regexFromStart.exec(this.buffer.substr(0, len));
+                    // console.log("match===>", match)
                     if (match) {
-                        this.buffer = this.buffer.substr(match[0].length);
+                        this.buffer = this.buffer.substr(match[0].length);                        
                         return new _Token2.default(type, match[0]);
                     }
                 }
