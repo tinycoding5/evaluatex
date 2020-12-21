@@ -144,17 +144,21 @@ var Lexer = function () {
             try {
                 for (var _iterator = _Token2.default.patterns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var _ref = _step.value;
+
                     var _ref2 = _slicedToArray(_ref, 2);
+
                     var type = _ref2[0];
                     var regex = _ref2[1];                   
                     // Force the regex to match only at the beginning of the string
                     var regexFromStart = new RegExp(/^/.source + regex.source);
+                    // console.log("regexFromStart", regexFromStart);
                   
                     // When `len` is undefined, substr reads to the end                 
                     var match = regexFromStart.exec(this.buffer.substr(0, len));
                     // console.log("match===>", match)
                     if (match) {
-                        this.buffer = this.buffer.substr(match[0].length);                        
+                        this.buffer = this.buffer.substr(match[0].length);
+                        // console.log("match buffer===> ", this.buffer)
                         return new _Token2.default(type, match[0]);
                     }
                 }

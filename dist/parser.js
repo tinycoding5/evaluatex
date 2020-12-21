@@ -34,7 +34,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 // correct order of operations.
 // This is a simple recursive-descent parser based on [Wikipedia's example](https://en.wikipedia.org/wiki/Recursive_descent_parser).
 
-function parser(tokens) {   
+function parser(tokens) {
     var p = new Parser(tokens);
     return p.parse();
 };
@@ -99,7 +99,7 @@ var Parser = function () {
 
     }, {
         key: "expect",
-        value: function expect(type) {            
+        value: function expect(type) {
             if (!this.accept(type)) {
                 throw "Expected " + type + " but got " + (this.currentToken ? this.currentToken.toString() : "end of input.");
             }
@@ -177,7 +177,7 @@ var Parser = function () {
             // Don't create a new node immediately, since we need to parse postfix
             // operators like factorials, which come after a value.
             var node = {};
-           
+
             if (this.accept(_Token2.default.TYPE_SYMBOL)) {
                 node = new _Node2.default(_Node2.default.TYPE_SYMBOL, this.prevToken.value);
             } else if (this.accept(_Token2.default.TYPE_NUMBER)) {
@@ -219,7 +219,9 @@ var Parser = function () {
                 node.addChild(this.sum());
                 this.expect(_Token2.default.TYPE_ABS);
             } else if (this.accept(_Token2.default.TYPE_STRING)) {
-                node = new _Node2.default(_Node2.default.TYPE_STRING, this.prevToken.value)               
+                node = new _Node2.default(_Node2.default.TYPE_STRING, this.prevToken.value)
+            } else if(this.accept(_Token2.default.TYPE_CONDITION)) {
+                node = new _Node2.default(_Node2.default.TYPE_CONDITION, this.prevToken.value)
             } else {
                 throw "Unexpected " + this.currentToken.toString() + " at token " + this.cursor;
             }
