@@ -71,8 +71,8 @@ var Lexer = function () {
         this.opts = opts;
         this.tokens = [];
         // console.log('exp', buffer);
-        // console.log('constants', constants);
-        // console.log('options', opts)
+        console.log('constants', constants);
+        console.log('options', opts)
     }
 
     _createClass(Lexer, [{
@@ -158,7 +158,7 @@ var Lexer = function () {
                     // console.log("match===>", match)
                     if (match) {
                         this.buffer = this.buffer.substr(match[0].length);
-                        // console.log("match buffer===> ", this.buffer)
+                        console.log("match buffer===> ", this.buffer)
                         return new _Token2.default(type, match[0]);
                     }
                 }

@@ -67,6 +67,9 @@ var Node = function () {
                 case Node.TYPE_NEGATE:
                     result = -this.child.evaluate(vars);
                     break;
+                case Node.TYPE_CONDITION:
+                    result = this.value;
+                    break;
                 case Node.TYPE_NUMBER:
                     result = this.value;
                     break;
@@ -90,6 +93,8 @@ var Node = function () {
                     if (isFinite(vars[this.value])) {
                         return vars[this.value];
                     }
+                    console.log( '--vars---',vars )
+                    console.log( '--isFinite---',vars[this.value] )
                     throw new Error("Symbol " + this.value + " is undefined or not a number");
             }
 
@@ -203,12 +208,14 @@ var Node = function () {
 Node.TYPE_FUNCTION = "FUNCTION";
 Node.TYPE_INVERSE = "INVERSE";
 Node.TYPE_NEGATE = "NEGATE";
+Node.TYPE_CONDITION = "CONDITION";
 Node.TYPE_NUMBER = "NUMBER";
 Node.TYPE_STRING = "STRING";
 Node.TYPE_POWER = "POWER";
 Node.TYPE_PRODUCT = "PRODUCT";
 Node.TYPE_SUM = "SUM";
 Node.TYPE_SYMBOL = "SYMBOL";
+Node.TYPE_OPERATOR = "OPERATOR";
 exports.default = Node;
 
 

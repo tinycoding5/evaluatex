@@ -36,6 +36,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function parser(tokens) {
     var p = new Parser(tokens);
+    console.log("tokens===>", tokens)
     return p.parse();
 };
 
@@ -222,7 +223,7 @@ var Parser = function () {
                 node = new _Node2.default(_Node2.default.TYPE_STRING, this.prevToken.value)
             } else if(this.accept(_Token2.default.TYPE_CONDITION)) {
                 node = new _Node2.default(_Node2.default.TYPE_CONDITION, this.prevToken.value)
-            } else {
+            }  else {
                 throw "Unexpected " + this.currentToken.toString() + " at token " + this.cursor;
             }
 
