@@ -90,11 +90,20 @@ var Node = function () {
                     }, 0);
                     break;
                 case Node.TYPE_SYMBOL:
+                    console.log("this.value===>", this.value)
+                    console.log( '--vars---',vars )
+                    console.log( '--isFinite---',vars[this.value] )
                     if (isFinite(vars[this.value])) {
                         return vars[this.value];
                     }
-                    console.log( '--vars---',vars )
-                    console.log( '--isFinite---',vars[this.value] )
+                    // if(this.value === 'TRUE') {
+                    //     return vars[true];
+                    // }
+                    // if(this.value === 'FALSE') {
+                    //     return vars[false];
+                    // }
+                    
+                    
                     throw new Error("Symbol " + this.value + " is undefined or not a number");
             }
 

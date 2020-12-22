@@ -36,7 +36,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function parser(tokens) {
     var p = new Parser(tokens);
-    console.log("tokens===>", tokens)
+    // console.log("tokens===>", tokens)
     return p.parse();
 };
 
