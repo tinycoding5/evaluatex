@@ -93,7 +93,7 @@ var Lexer = function () {
             var charMode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
             while (this.hasNext()) {
-                var token = charMode ? this.nextCharToken() : this.next();               
+                var token = charMode ? this.nextCharToken() : this.next();
                 this.tokens.push((0, _replaceToken2.default)(token));
 
                 if (this.opts.latex && isCharArgToken(token)) {
@@ -131,7 +131,6 @@ var Lexer = function () {
             var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
 
             this.skipWhitespace();
-
             if (!this.hasNext()) {
                 throw "Lexer error: reached end of stream";
             }
@@ -148,11 +147,11 @@ var Lexer = function () {
                     var _ref2 = _slicedToArray(_ref, 2);
 
                     var type = _ref2[0];
-                    var regex = _ref2[1];                   
+                    var regex = _ref2[1];
                     // Force the regex to match only at the beginning of the string
                     var regexFromStart = new RegExp(/^/.source + regex.source);
                     // console.log("regexFromStart", regexFromStart);
-                  
+
                     // When `len` is undefined, substr reads to the end                 
                     var match = regexFromStart.exec(this.buffer.substr(0, len));
                     // console.log("match===>", match)
